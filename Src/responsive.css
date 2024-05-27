@@ -1,0 +1,18 @@
+@media only screen and (max-width: 440px) {
+  .timer-container {
+    width: 90% !important;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .modal,
+  #error {
+    width: 100% !important;
+  }
+
+  #error p {
+    font-size: 18px !important;
+  }
+}

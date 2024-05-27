@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+    <link rel="stylesheet" href="./Src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="timer-container">
+      <div class="timer">00:00:00</div>
+      <div class="btn-container">
+        <button id="play-pause"><i class="fa-solid fa-play"></i></button>
+        <button id="stop"><i class="fa-solid fa-stop"></i></button>
+        <button id="secondAdd"><i class="fa-solid fa-clock"></i></button>
+      </div>
+    </div>
+
+    <div class="modalClose modal hidden">
+      <i class="fa-solid fa-x"></i>
+      <p>Dəqiqəni daxil edin.</p>
+      <p>(max 120 dəqiqə)</p>
+      <input type="text" id="timeInput" />
+      <button id="submitBtn">BİTİR</button>
+    </div>
+
+    <div id="error" class="modalClose hidden">
+      <i class="fa-solid fa-x"></i>
+      <p>Daxil etdiyiniz ədəd uyğun deyil!</p>
+      <span>X</span>
+    </div>
+    <div id="overlay" class="modalClose hidden"></div>
+    <script src="./Src/app.js"></script>
+  </body>
+</html>
