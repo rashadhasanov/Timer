@@ -54,14 +54,11 @@ playPauseBtn.addEventListener("click", () => {
   if (playIcon.classList.contains("fa-play") && !secondValue == 0) {
     playIcon.classList.remove("fa-play");
     playIcon.classList.add("fa-pause");
+    startTimer();
   } else {
     playIcon.classList.add("fa-play");
     playIcon.classList.remove("fa-pause");
     stopTimer();
-  }
-
-  if (secondValue !== 0) {
-    startTimer();
   }
 });
 
@@ -104,7 +101,7 @@ secondAdd.addEventListener("click", () => {
 });
 
 function updateTimerValue() {
-  const trimInputValue = Number(timeInput.value.trim());
+  const trimInputValue = Math.floor(Number(timeInput.value.trim()));
   if (!isNaN(trimInputValue) && trimInputValue <= 120 && trimInputValue > 0) {
     timerValue = trimInputValue;
     secondValue = timerValue * 60;
