@@ -16,6 +16,7 @@ const error = document.getElementById("error");
 // let timerValue;
 let secondValue = 0;
 let timerFunc;
+let colorFunc;
 
 //Saniyeni guncelleyerek 00:00:00 formatinda yazmaq ucun funksiya
 
@@ -35,11 +36,30 @@ function startTimer() {
   timerFunc = setInterval(() => {
     if (secondValue <= 0) {
       clearInterval(timerFunc);
+      clearInterval(colorFunc);
+      playIcon.classList.remove("fa-pause");
+      playIcon.classList.add("fa-play");
       timer.textContent = "00:00:00";
+      timer.style.borderColor = "white";
     } else {
       secondValue--;
       updateTimerDisplay();
     }
+  }, 1000);
+}
+
+//setInterval border rengi deyismek ucun
+
+const randomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+function startColorFunc() {
+  colorFunc = setInterval(() => {
+    timer.style.borderColor = `rgb(${randomNumber(0, 255)}, ${randomNumber(
+      0,
+      255
+    )}, ${randomNumber(0, 255)})`;
   }, 1000);
 }
 
@@ -48,6 +68,9 @@ function stopTimer() {
   clearInterval(timerFunc);
 }
 
+function stopColorFunc() {
+  clearInterval(colorFunc);
+}
 // Iconlarin deyismesi prosesi ve timerin baslatilmasi
 
 playPauseBtn.addEventListener("click", () => {
@@ -55,15 +78,19 @@ playPauseBtn.addEventListener("click", () => {
     playIcon.classList.remove("fa-play");
     playIcon.classList.add("fa-pause");
     startTimer();
+    startColorFunc();
   } else {
     playIcon.classList.add("fa-play");
     playIcon.classList.remove("fa-pause");
     stopTimer();
+    stopColorFunc();
   }
 });
 
 stopBtn.addEventListener("click", () => {
+  stopColorFunc();
   stopTimer();
+  timer.style.borderColor = "white";
   secondValue = 0;
   timer.textContent = "00:00:00";
   playIcon.classList.add("fa-play");
